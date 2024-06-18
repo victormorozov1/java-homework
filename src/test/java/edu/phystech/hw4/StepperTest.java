@@ -28,7 +28,9 @@ public class StepperTest {
                 } else {
                     stepper.rightStep();
                 }
-            } catch (Exception e) {}
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
         Assertions.assertEquals(100_000, stepper.getHistory().size());
         for (int i = 0; i < 100_000; ++i) {
@@ -44,7 +46,9 @@ public class StepperTest {
         List<Future<?>> futures = IntStream.range(0, 600).mapToObj(i ->
             executorService.submit(() -> {
                 try {stepper.rightStep();
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                    e.printStackTrace();  // Эта штучка иногда помогает
+                }
             })).collect(Collectors.toList());
         boolean isFinished = executorService.awaitTermination(5, TimeUnit.SECONDS);
         Assertions.assertFalse(isFinished);
@@ -86,7 +90,9 @@ public class StepperTest {
                         if (i % 2 == 0) {
                             stepper.leftStep();
                         } else stepper.rightStep();
-                    } catch (Exception e) {}
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 })).collect(Collectors.toList());
 
         // wait completion of all futures
