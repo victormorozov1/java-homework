@@ -4,9 +4,10 @@ public class InvalidContactFieldException extends RuntimeException {
     private String fieldName;
 
     public String getFieldName() {
-        return null;
+        return this.fieldName;
     }
 
     InvalidContactFieldException(String fieldName) {
+        this.fieldName = fieldName;
     }
 }
