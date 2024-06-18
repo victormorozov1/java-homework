@@ -1,5 +1,6 @@
 package edu.phystech.hw2.analyzer;
 
+import java.util.Arrays;
 import java.util.List;
 
 public abstract class KeywordAnalyzer implements TextAnalyzer {
@@ -14,6 +15,12 @@ public abstract class KeywordAnalyzer implements TextAnalyzer {
 
     @Override
     public Label processText(String text) {
-        return null;
+        var a = Arrays.asList(text.split(" "));
+        for (String keyword : keywords) {
+            if (a.contains(keyword)) {
+                return label;
+            }
+        }
+        return Label.OK;
     }
 }

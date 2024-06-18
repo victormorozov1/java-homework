@@ -4,6 +4,6 @@ import java.util.List;
 
 public class SpamAnalyzer extends KeywordAnalyzer{
     public SpamAnalyzer(List<String> keywords) {
-        super(null, null);
+        super(keywords, Label.SPAM);
     }
 }

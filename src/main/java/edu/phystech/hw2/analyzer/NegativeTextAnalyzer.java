@@ -7,6 +7,6 @@ public class NegativeTextAnalyzer extends KeywordAnalyzer {
     private static final List<String> NEGATIVE_SMILES = List.of(":(", "=(", ":|");
 
     public NegativeTextAnalyzer() {
-        super(null, null);
+        super(NEGATIVE_SMILES, Label.NEGATIVE);
     }
 }
