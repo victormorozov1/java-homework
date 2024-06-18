@@ -14,7 +14,6 @@ record Contact(String username, String email)  implements Comparable<Contact> {
 
     Contact(String username) { this(username, UNKNOWN_EMAIL); }
 
-
     public int compareTo(Contact o) {
         if (this.username.length() > o.username.length()) {
             return 1;
