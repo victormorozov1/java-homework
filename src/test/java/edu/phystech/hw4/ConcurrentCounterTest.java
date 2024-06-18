@@ -18,10 +18,19 @@ import org.junit.jupiter.api.Test;
  * @author kzlv4natoly
  */
 class ConcurrentCounter {
+    // Проще всего было использовать AtomicLong, но думаю в зажании подразумевалось использовать именно лок
     private long value = 0;
-    void increment() {}
+    private final Object lock = new Object();
 
-    long getValue() { return 0; }
+    public void increment() {
+        synchronized (lock) {
+            value += 1;
+        }
+    }
+
+    public long getValue() {
+        return value;
+    }
 }
 
 
